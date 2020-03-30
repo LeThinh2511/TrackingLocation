@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32A8F79D2431E10C00BF117B /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A8F79C2431E10C00BF117B /* Logger.swift */; };
+		32A8F79F2431F6C000BF117B /* AppDelegate+Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A8F79E2431F6C000BF117B /* AppDelegate+Notification.swift */; };
 		32B0F3422431DA5A00FF746C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B0F3412431DA5A00FF746C /* AppDelegate.swift */; };
-		32B0F3442431DA5A00FF746C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B0F3432431DA5A00FF746C /* SceneDelegate.swift */; };
 		32B0F3462431DA5A00FF746C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B0F3452431DA5A00FF746C /* ViewController.swift */; };
 		32B0F3492431DA5A00FF746C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32B0F3472431DA5A00FF746C /* Main.storyboard */; };
 		32B0F34B2431DA6000FF746C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32B0F34A2431DA6000FF746C /* Assets.xcassets */; };
 		32B0F34E2431DA6000FF746C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32B0F34C2431DA6000FF746C /* LaunchScreen.storyboard */; };
 		32B0F3592431DA6100FF746C /* TrackingLocationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B0F3582431DA6100FF746C /* TrackingLocationTests.swift */; };
+		32B0F3652431DB2C00FF746C /* AppDelegate+Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B0F3642431DB2C00FF746C /* AppDelegate+Location.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,9 +29,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		32A8F79C2431E10C00BF117B /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		32A8F79E2431F6C000BF117B /* AppDelegate+Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Notification.swift"; sourceTree = "<group>"; };
 		32B0F33E2431DA5A00FF746C /* TrackingLocation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackingLocation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32B0F3412431DA5A00FF746C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		32B0F3432431DA5A00FF746C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		32B0F3452431DA5A00FF746C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		32B0F3482431DA5A00FF746C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		32B0F34A2431DA6000FF746C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -38,6 +41,7 @@
 		32B0F3542431DA6100FF746C /* TrackingLocationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrackingLocationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		32B0F3582431DA6100FF746C /* TrackingLocationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingLocationTests.swift; sourceTree = "<group>"; };
 		32B0F35A2431DA6100FF746C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32B0F3642431DB2C00FF746C /* AppDelegate+Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Location.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		32A8F7982431E0BB00BF117B /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				32B0F34C2431DA6000FF746C /* LaunchScreen.storyboard */,
+				32B0F3452431DA5A00FF746C /* ViewController.swift */,
+				32B0F3472431DA5A00FF746C /* Main.storyboard */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		32A8F79A2431E0E500BF117B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				32B0F34A2431DA6000FF746C /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		32A8F79B2431E0FB00BF117B /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				32A8F79C2431E10C00BF117B /* Logger.swift */,
+			);
+			path = Logger;
+			sourceTree = "<group>";
+		};
 		32B0F3352431DA5A00FF746C = {
 			isa = PBXGroup;
 			children = (
@@ -79,13 +109,11 @@
 		32B0F3402431DA5A00FF746C /* TrackingLocation */ = {
 			isa = PBXGroup;
 			children = (
-				32B0F3412431DA5A00FF746C /* AppDelegate.swift */,
-				32B0F3432431DA5A00FF746C /* SceneDelegate.swift */,
-				32B0F3452431DA5A00FF746C /* ViewController.swift */,
-				32B0F3472431DA5A00FF746C /* Main.storyboard */,
-				32B0F34A2431DA6000FF746C /* Assets.xcassets */,
-				32B0F34C2431DA6000FF746C /* LaunchScreen.storyboard */,
 				32B0F34F2431DA6000FF746C /* Info.plist */,
+				32A8F7982431E0BB00BF117B /* Scenes */,
+				32B0F3632431DB0C00FF746C /* Application */,
+				32A8F79B2431E0FB00BF117B /* Logger */,
+				32A8F79A2431E0E500BF117B /* Resources */,
 			);
 			path = TrackingLocation;
 			sourceTree = "<group>";
@@ -97,6 +125,16 @@
 				32B0F35A2431DA6100FF746C /* Info.plist */,
 			);
 			path = TrackingLocationTests;
+			sourceTree = "<group>";
+		};
+		32B0F3632431DB0C00FF746C /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				32B0F3412431DA5A00FF746C /* AppDelegate.swift */,
+				32B0F3642431DB2C00FF746C /* AppDelegate+Location.swift */,
+				32A8F79E2431F6C000BF117B /* AppDelegate+Notification.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,9 +238,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32B0F3652431DB2C00FF746C /* AppDelegate+Location.swift in Sources */,
+				32A8F79F2431F6C000BF117B /* AppDelegate+Notification.swift in Sources */,
 				32B0F3462431DA5A00FF746C /* ViewController.swift in Sources */,
 				32B0F3422431DA5A00FF746C /* AppDelegate.swift in Sources */,
-				32B0F3442431DA5A00FF746C /* SceneDelegate.swift in Sources */,
+				32A8F79D2431E10C00BF117B /* Logger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,7 +403,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z2S78UX6KB;
 				INFOPLIST_FILE = TrackingLocation/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -380,7 +422,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z2S78UX6KB;
 				INFOPLIST_FILE = TrackingLocation/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
