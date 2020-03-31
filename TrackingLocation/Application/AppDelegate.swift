@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let locationManager = CLLocationManager()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        configLocationManager()
         if launchOptions?[UIApplication.LaunchOptionsKey.location] != nil {
             let text = "Launch by location event: isBackground - \(locationManager.allowsBackgroundLocationUpdates)"
             Logger.write(text: text, to: Logger.locationLog)
@@ -24,18 +25,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             registerNotifications()
         }
-        configLocationManager()
         return true
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
         Logger.write(text: "applicationDidEnterBackground", to: Logger.locationLog)
-        trackUserLocation()
+        startMoniteringCurrentRegion()
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
         Logger.write(text: "applicationWillTerminate", to: Logger.locationLog)
-        trackUserLocation()
+        startMoniteringCurrentRegion()
     }
 }
 

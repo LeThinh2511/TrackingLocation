@@ -29,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3218F0F124332A9E00961F2D /* current.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = current.gpx; sourceTree = "<group>"; };
 		32A8F79C2431E10C00BF117B /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		32A8F79E2431F6C000BF117B /* AppDelegate+Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Notification.swift"; sourceTree = "<group>"; };
 		32B0F33E2431DA5A00FF746C /* TrackingLocation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackingLocation.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				32B0F34F2431DA6000FF746C /* Info.plist */,
+				3218F0F124332A9E00961F2D /* current.gpx */,
 				32A8F7982431E0BB00BF117B /* Scenes */,
 				32B0F3632431DB0C00FF746C /* Application */,
 				32A8F79B2431E0FB00BF117B /* Logger */,

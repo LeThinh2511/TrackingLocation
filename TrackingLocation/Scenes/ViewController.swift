@@ -28,7 +28,7 @@ class ViewController: UIViewController {
         }
         
         locationLabel.text = "\(currentLocation.coordinate.latitude) -  \(currentLocation.coordinate.longitude)"
-        appDelegate.trackUserLocation()
+        appDelegate.startMoniteringCurrentRegion()
     }
 }
 
