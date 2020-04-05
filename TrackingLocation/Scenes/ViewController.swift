@@ -13,8 +13,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        guard let currentLocation = appDelegate.currentLocation else {
+        guard let currentLocation = LocationManager.shared.currentLocation else {
             return
         }
         
@@ -22,13 +21,12 @@ class ViewController: UIViewController {
     }
 
     @IBAction func didTapStartTracking(_ sender: UIButton) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        guard let currentLocation = appDelegate.currentLocation else {
+        guard let currentLocation = LocationManager.shared.currentLocation else {
             return
         }
         
         locationLabel.text = "\(currentLocation.coordinate.latitude) -  \(currentLocation.coordinate.longitude)"
-        appDelegate.startMoniteringCurrentRegion()
+        LocationManager.shared.startMoniteringCurrentRegion()
     }
 }
 

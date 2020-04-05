@@ -1,15 +1,22 @@
 //
-//  AppDelegate+Location.swift
+//  LocationManager.swift
 //  TrackingLocation
 //
-//  Created by ThinhLe on 3/30/20.
+//  Created by ThinhLe on 4/5/20.
 //  Copyright © 2020 ThinhLe. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import CoreLocation
+import UIKit
 
-extension AppDelegate: CLLocationManagerDelegate {
+class LocationManager: NSObject, CLLocationManagerDelegate {
+    static let shared = LocationManager()
+    
+    let locationManager = CLLocationManager()
+    var currentLocation: CLLocation?
+    
+    private override init() {}
     
     func configLocationManager() {
         locationManager.delegate = self
@@ -32,7 +39,7 @@ extension AppDelegate: CLLocationManagerDelegate {
     func startMoniteringCurrentRegion() {
         guard let location = currentLocation else {
             Logger.write(text: "Problem with location in creating region", to: Logger.locationLog)
-            scheduleLocalNotification(alert: "Problem with location in creating region")
+            LocalNotificationManager.shared.scheduleLocalNotification(alert: "Problem with location in creating region")
             return
         }
 
@@ -45,7 +52,7 @@ extension AppDelegate: CLLocationManagerDelegate {
             Logger.write(text: "Start Monitoring", to: Logger.locationLog)
         } else {
             Logger.write(text: "System can not track user's location", to: Logger.locationLog)
-            scheduleLocalNotification(alert: "System can not track user's location")
+            LocalNotificationManager.shared.scheduleLocalNotification(alert: "System can not track user's location")
         }
     }
     
@@ -72,13 +79,13 @@ extension AppDelegate: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
         let text = "Monitor region: \(region.identifier)"
         Logger.write(text: text, to: Logger.locationLog)
-        scheduleLocalNotification(alert: text)
+        LocalNotificationManager.shared.scheduleLocalNotification(alert: text)
     }
     
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         let text = "Exit region: \(region.identifier)"
         Logger.write(text: text, to: Logger.locationLog)
-        scheduleLocalNotification(alert: text)
+        LocalNotificationManager.shared.scheduleLocalNotification(alert: text)
         locationManager.stopMonitoring(for: region)
         locationManager.startUpdatingLocation()
     }

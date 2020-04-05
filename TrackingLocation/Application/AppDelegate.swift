@@ -13,15 +13,12 @@ import CoreLocation
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var currentLocation: CLLocation?
-    let locationManager = CLLocationManager()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        configLocationManager()
+        LocationManager.shared.configLocationManager()
         if launchOptions?[UIApplication.LaunchOptionsKey.location] != nil {
-            let text = "Launch by location event: isBackground - \(locationManager.allowsBackgroundLocationUpdates)"
+            let text = "Launch by location event"
             Logger.write(text: text, to: Logger.locationLog)
-            scheduleLocalNotification(alert: text)
         } else {
             registerNotifications()
         }
@@ -30,12 +27,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidEnterBackground(_ application: UIApplication) {
         Logger.write(text: "applicationDidEnterBackground", to: Logger.locationLog)
-        startMoniteringCurrentRegion()
+        LocationManager.shared.startMoniteringCurrentRegion()
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
         Logger.write(text: "applicationWillTerminate", to: Logger.locationLog)
-        startMoniteringCurrentRegion()
+        LocationManager.shared.startMoniteringCurrentRegion()
     }
 }
 
