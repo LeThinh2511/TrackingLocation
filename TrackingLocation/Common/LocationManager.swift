@@ -39,7 +39,6 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     func startMoniteringCurrentRegion() {
         guard let location = currentLocation else {
             Logger.write(text: "Problem with location in creating region", to: Logger.locationLog)
-            LocalNotificationManager.shared.scheduleLocalNotification(alert: "Problem with location in creating region")
             return
         }
 
@@ -52,7 +51,6 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
             Logger.write(text: "Start Monitoring", to: Logger.locationLog)
         } else {
             Logger.write(text: "System can not track user's location", to: Logger.locationLog)
-            LocalNotificationManager.shared.scheduleLocalNotification(alert: "System can not track user's location")
         }
     }
     
@@ -66,6 +64,9 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
             return
         }
         currentLocation = location
+        var notification = Notification(name: Define.locationUpdate)
+        notification.object = location
+        NotificationCenter.default.post(notification)
         if UIApplication.shared.applicationState == .active {
             //send location to server
             let text = "Active: \(location.coordinate.latitude) - \(location.coordinate.longitude)"
@@ -79,13 +80,11 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
         let text = "Monitor region: \(region.identifier)"
         Logger.write(text: text, to: Logger.locationLog)
-        LocalNotificationManager.shared.scheduleLocalNotification(alert: text)
     }
     
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         let text = "Exit region: \(region.identifier)"
         Logger.write(text: text, to: Logger.locationLog)
-        LocalNotificationManager.shared.scheduleLocalNotification(alert: text)
         locationManager.stopMonitoring(for: region)
         locationManager.startUpdatingLocation()
     }

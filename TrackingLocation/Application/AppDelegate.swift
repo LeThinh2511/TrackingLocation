@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import GoogleMaps
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         LocationManager.shared.configLocationManager()
+        GMSServices.provideAPIKey(Define.googleMapKey)
         if launchOptions?[UIApplication.LaunchOptionsKey.location] != nil {
             let text = "Launch by location event"
             Logger.write(text: text, to: Logger.locationLog)

@@ -1,15 +1,32 @@
 <?xml version="1.0"?>
 <gpx version="1.1" creator="Xcode">
-    <wpt lat="16.043532" lon="108.169184">
+    <wpt lat="16.053131" lon="108.173449">
         <name>Cupertino</name>
-        <time>2014-09-24T15:00:37Z</time>
+        <time>2014-09-24T15:00:00Z</time>
+    </wpt>
+    <wpt lat="16.043691" lon="108.176374">
+        <name>Cupertino</name>
+        <time>2014-09-24T15:01:00Z</time>
+    </wpt>
+    <wpt lat="16.041949" lon="108.171646">
+        <name>Cupertino</name>
+        <time>2014-09-24T15:02:00Z</time>
+    </wpt>
+    <wpt lat="16.043573" lon="108.169830">
+        <name>Cupertino</name>
+        <time>2014-09-24T15:03:00Z</time>
+    </wpt>
+    
+    <wpt lat="16.041972" lon="108.171632">
+        <name>Cupertino</name>
+        <time>2014-09-24T15:04:00Z</time>
     </wpt>
     <wpt lat="16.043576" lon="108.169848">
         <name>Cupertino1</name>
-        <time>2014-09-24T15:02:37Z</time>
+        <time>2014-09-24T15:04:20Z</time>
     </wpt>
-    <wpt lat="16.041972" lon="108.171632">
+    <wpt lat="16.043532" lon="108.169184">
         <name>Cupertino2</name>
-        <time>2014-09-24T15:06:37Z</time>
+        <time>2014-09-24T15:04:30Z</time>
     </wpt>
 </gpx>
