@@ -16,7 +16,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var button: UIButton!
     
     var polygons = [GMSPolygon]()
-    var isSafe = true
     var isFirst = true
     
     override func viewDidLoad() {
@@ -47,24 +46,22 @@ class ViewController: UIViewController {
             }
             let currentLocation = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             if self.isInSafeArea(location: currentLocation) {
-                let text = "You are in a safe area!!!"
-                if !self.isSafe {
+                let text = "😍 You are safe 👌"
+                if !UserInfoManager.shared.isSafe {
                     let manager = LocalNotificationManager.shared
                     manager.scheduleLocalNotification(alert: text)
-                    Logger.write(text: text, to: Logger.locationLog)
                 }
-                self.isSafe = true
+                UserInfoManager.shared.isSafe = true
                 print("log: \(text)")
                 self.button.backgroundColor = .green
                 self.button.setTitle(text, for: .normal)
             } else {
-                let text = "You are in a dangerous area!!!"
-                if self.isSafe {
+                let text = "⛔️ You are in a dangerous area ⛔️!!!"
+                if UserInfoManager.shared.isSafe {
                     let manager = LocalNotificationManager.shared
                     manager.scheduleLocalNotification(alert: text)
-                    Logger.write(text: text, to: Logger.locationLog)
                 }
-                self.isSafe = false
+                UserInfoManager.shared.isSafe = false
                 print("log: \(text)")
                 self.button.backgroundColor = .red
                 self.button.setTitle(text, for: .normal)

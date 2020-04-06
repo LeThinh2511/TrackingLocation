@@ -10,6 +10,7 @@
 		3250C7822439B8E400D9ECC2 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3250C7812439B8E400D9ECC2 /* LocationManager.swift */; };
 		3250C7842439BAC200D9ECC2 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3250C7832439BAC200D9ECC2 /* LocalNotificationManager.swift */; };
 		329907E4243ACCE900F93DA1 /* Define.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329907E3243ACCE900F93DA1 /* Define.swift */; };
+		329907EA243B1ED500F93DA1 /* UserInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329907E9243B1ED500F93DA1 /* UserInfoManager.swift */; };
 		32A8F79D2431E10C00BF117B /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A8F79C2431E10C00BF117B /* Logger.swift */; };
 		32A8F79F2431F6C000BF117B /* AppDelegate+Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A8F79E2431F6C000BF117B /* AppDelegate+Notification.swift */; };
 		32B0F3422431DA5A00FF746C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B0F3412431DA5A00FF746C /* AppDelegate.swift */; };
@@ -40,6 +41,7 @@
 		329907E3243ACCE900F93DA1 /* Define.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Define.swift; sourceTree = "<group>"; };
 		329907E6243ADF4A00F93DA1 /* HaiChauPolygon.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = HaiChauPolygon.json; sourceTree = "<group>"; };
 		329907E7243AE04D00F93DA1 /* LienChieuPolygon.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LienChieuPolygon.json; sourceTree = "<group>"; };
+		329907E9243B1ED500F93DA1 /* UserInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoManager.swift; sourceTree = "<group>"; };
 		32A8F79C2431E10C00BF117B /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		32A8F79E2431F6C000BF117B /* AppDelegate+Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Notification.swift"; sourceTree = "<group>"; };
 		32B0F33E2431DA5A00FF746C /* TrackingLocation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackingLocation.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +87,7 @@
 				3250C7812439B8E400D9ECC2 /* LocationManager.swift */,
 				3250C7832439BAC200D9ECC2 /* LocalNotificationManager.swift */,
 				329907E3243ACCE900F93DA1 /* Define.swift */,
+				329907E9243B1ED500F93DA1 /* UserInfoManager.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				32B0F3462431DA5A00FF746C /* ViewController.swift in Sources */,
 				32B0F3422431DA5A00FF746C /* AppDelegate.swift in Sources */,
 				32A8F79D2431E10C00BF117B /* Logger.swift in Sources */,
+				329907EA243B1ED500F93DA1 /* UserInfoManager.swift in Sources */,
 				329907E4243ACCE900F93DA1 /* Define.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
