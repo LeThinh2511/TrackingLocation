@@ -8,6 +8,7 @@ target 'TrackingLocation' do
   # Pods for TrackingLocation
   pod 'GoogleMaps', '3.4.0'
   pod 'GooglePlaces', '3.4.0'
+  pod 'Alamofire', '~> 5.1'
 
   target 'TrackingLocationTests' do
     inherit! :search_paths
