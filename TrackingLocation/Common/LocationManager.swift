@@ -137,7 +137,8 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
             if let jsonResult = jsonResult as? [[Double]] {
                 var mapPoints = [MKMapPoint]()
                 for point in jsonResult {
-                    let mapPoint = MKMapPoint(x: point[1], y: point[0])
+                    let coordinate = CLLocationCoordinate2D(latitude: point[1], longitude: point[0])
+                    let mapPoint = MKMapPoint(coordinate)
                     mapPoints.append(mapPoint)
                 }
                 let polygon = MKPolygon(points: mapPoints, count: mapPoints.count)
@@ -152,7 +153,8 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
             if let jsonResult = jsonResult as? [[Double]] {
                 var mapPoints = [MKMapPoint]()
                 for point in jsonResult {
-                    let mapPoint = MKMapPoint(x: point[1], y: point[0])
+                    let coordinate = CLLocationCoordinate2D(latitude: point[1], longitude: point[0])
+                    let mapPoint = MKMapPoint(coordinate)
                     mapPoints.append(mapPoint)
                 }
                 let polygon = MKPolygon(points: mapPoints, count: mapPoints.count)

@@ -8,28 +8,30 @@
 
 import UIKit
 import GoogleMaps
+import MapKit
 
-class ViewController: UIViewController {
-    @IBOutlet weak var mapView: GMSMapView!
+class ViewController: UIViewController, MKMapViewDelegate {
+    @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var latitudeLabel: UILabel!
     @IBOutlet weak var longitudeLabel: UILabel!
     @IBOutlet weak var button: UIButton!
     
-    var polygons = [GMSPolygon]()
+    var polygons = [MKPolygon]()
     var isFirst = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mapView.settings.myLocationButton = true
-        mapView.isMyLocationEnabled = true
         getPolygons()
         observeLocationUpdate()
-        for polygon in polygons {
-            polygon.strokeColor = .red
-            polygon.strokeWidth = 1
-            polygon.fillColor = UIColor.red.withAlphaComponent(0.5)
-            polygon.map = mapView
-        }
+        addOverlay()
+        mapView.delegate = self
+        mapView.setUserTrackingMode(.follow, animated: true)
+//        for polygon in polygons {
+//            polygon.strokeColor = .red
+//            polygon.strokeWidth = 1
+//            polygon.fillColor = UIColor.red.withAlphaComponent(0.5)
+//            polygon.map = mapView
+//        }
     }
     
     deinit {
@@ -39,20 +41,46 @@ class ViewController: UIViewController {
     @IBAction func didTapButton(_ sender: UIButton) {
     }
     
+    func mapViewDidFinishLoadingMap(_ mapView: MKMapView) {
+        print(#function)
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if overlay is MKPolygon{
+            let renderer = MKPolygonRenderer(polygon: overlay as! MKPolygon)
+            renderer.fillColor=UIColor.red.withAlphaComponent(0.5)
+            renderer.strokeColor=UIColor.orange
+            renderer.lineWidth=4
+            return renderer
+        }
+        
+        return MKOverlayRenderer()
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        return nil
+    }
+    
+    func addOverlay() {
+        for polygon in polygons {
+            mapView.addOverlay(polygon, level: .aboveRoads)
+        }
+    }
+    
     private func observeLocationUpdate() {
         NotificationCenter.default.addObserver(forName: Define.locationUpdate, object: nil, queue: nil) { [weak self] (notification) in
             guard let location = notification.object as? CLLocation, let `self` = self else {
                 return
             }
             let currentLocation = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-            if self.isInSafeArea(location: currentLocation) {
+            if self.isInSafeArea(coordinate: currentLocation) {
                 let text = "😍 You are safe 👌"
                 if !UserInfoManager.shared.isSafe {
                     let manager = LocalNotificationManager.shared
                     manager.scheduleLocalNotification(alert: text)
+                    print("log: \(text)")
                 }
                 UserInfoManager.shared.isSafe = true
-                print("log: \(text)")
                 self.button.backgroundColor = .green
                 self.button.setTitle(text, for: .normal)
             } else {
@@ -60,22 +88,28 @@ class ViewController: UIViewController {
                 if UserInfoManager.shared.isSafe {
                     let manager = LocalNotificationManager.shared
                     manager.scheduleLocalNotification(alert: text)
+                    print("log: \(text)")
                 }
                 UserInfoManager.shared.isSafe = false
-                print("log: \(text)")
                 self.button.backgroundColor = .red
                 self.button.setTitle(text, for: .normal)
             }
             self.latitudeLabel.text = "\(location.coordinate.latitude)"
             self.longitudeLabel.text = "\(location.coordinate.longitude)"
-            self.mapView.animate(toLocation: currentLocation)
-            self.mapView.animate(toZoom: 16.0)
+            self.mapView.setCenter(currentLocation, animated: true)
+            let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+            let region = MKCoordinateRegion(center: currentLocation, span: span)
+            self.mapView.setRegion(region, animated: true)
         }
     }
     
-    private func isInSafeArea(location: CLLocationCoordinate2D) -> Bool {
-        for area in polygons {
-            if let path = area.path, GMSGeometryContainsLocation(location, path, true) {
+    private func isInSafeArea(coordinate: CLLocationCoordinate2D) -> Bool {
+        for polygon in polygons {
+            let polygonRenderer = MKPolygonRenderer(polygon: polygon)
+            let mapPoint: MKMapPoint = MKMapPoint(coordinate)
+            let polygonViewPoint: CGPoint = polygonRenderer.point(for: mapPoint)
+
+            if polygonRenderer.path.contains(polygonViewPoint) {
                 return false
             }
         }
@@ -87,12 +121,13 @@ class ViewController: UIViewController {
             let data = haichau.data(using: .utf8)!
             let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
             if let jsonResult = jsonResult as? [[Double]] {
-                let path = GMSMutablePath()
+                var mapPoints = [MKMapPoint]()
                 for point in jsonResult {
                     let coordinate = CLLocationCoordinate2D(latitude: point[1], longitude: point[0])
-                    path.add(coordinate)
+                    let mapPoint = MKMapPoint(coordinate)
+                    mapPoints.append(mapPoint)
                 }
-                let polygon = GMSPolygon(path: path)
+                let polygon = MKPolygon(points: mapPoints, count: mapPoints.count)
                 polygons.append(polygon)
             }
         } catch {
@@ -102,13 +137,14 @@ class ViewController: UIViewController {
             let data = lienchieu.data(using: .utf8)!
             let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
             if let jsonResult = jsonResult as? [[Double]] {
-                let path = GMSMutablePath()
+                var mapPoints = [MKMapPoint]()
                 for point in jsonResult {
                     let coordinate = CLLocationCoordinate2D(latitude: point[1], longitude: point[0])
-                    path.add(coordinate)
+                    let mapPoint = MKMapPoint(coordinate)
+                    mapPoints.append(mapPoint)
                 }
-                let polygon = GMSPolygon(path: path)
-                polygons.append(polygon )
+                let polygon = MKPolygon(points: mapPoints, count: mapPoints.count)
+                polygons.append(polygon)
             }
         } catch {
         }

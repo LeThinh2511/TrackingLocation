@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Delegate-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TrackingLocation" customModuleProvider="target" sceneMemberID="viewController">
@@ -16,9 +16,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2qv-yL-pIw" customClass="GMSMapView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2qv-yL-pIw" customClass="MKMapView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="448"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="emi-GG-fXQ"/>
+                                </connections>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="gKk-aQ-n27">
                                 <rect key="frame" x="12" y="460" width="390" height="402"/>
@@ -79,7 +82,7 @@
                         <outlet property="button" destination="Coe-bH-lar" id="gUG-TY-2Ea"/>
                         <outlet property="latitudeLabel" destination="zsV-dR-yqR" id="ruQ-gg-5QH"/>
                         <outlet property="longitudeLabel" destination="yw2-n6-be9" id="fBm-ft-SJn"/>
-                        <outlet property="mapView" destination="2qv-yL-pIw" id="Uak-Hx-6GS"/>
+                        <outlet property="mapView" destination="2qv-yL-pIw" id="SWd-fw-yQD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
